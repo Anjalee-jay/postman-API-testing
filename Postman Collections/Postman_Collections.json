@@ -1,30 +1,163 @@
 {
 	"info": {
-		"_postman_id": "6a92c95f-bea0-4d18-88dc-ba77604b9ef9",
+		"_postman_id": "99b53cbe-ae3e-4983-9887-e7a911371d43",
 		"name": "Conduit",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "Verification",
+			"item": [
+				{
+					"name": "New Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "40042c42-cb2b-46fa-b3e0-8cd8663a49eb",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.expect(pm.response.to.have.status(200));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type header is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"let skipTest = !(pm.response.code === 404);\r",
+									"console.log(skipTest);\r",
+									"\r",
+									"(skipTest ? pm.test.skip : pm.test)(\"HTTP problem response meets standards for 404\", function () {\r",
+									"    var responseJSON = pm.response.json();\r",
+									"    pm.expect(responseJSON).to.be.an('object');\r",
+									"    pm.expect(responseJSON).to.have.property('type');\r",
+									"    pm.expect(responseJSON).to.have.property('correlationId');\r",
+									"});\r",
+									"\r",
+									"(skipTest ? pm.test.skip : pm.test)(\"HTTP problem response header\", function () {\r",
+									"    const header = pm.response.headers.get(\"Content-Type\");\r",
+									"    pm.expect(header).to.include(\"application/problem+json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "2018857b-dfde-4d60-882b-9d887aea8e5d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
+			"id": "c76fcfc0-407d-43cb-9fa5-54d2b3269b89",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "05bf5e99-69e7-4ac5-972b-18728ad74bfb",
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "df8820a8-fa4b-487d-8f3d-b56d121cb8f2",
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.expect(pm.response.to.have.status(200));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"let skipTest = !(pm.response.code === 404);\r",
+							"console.log(skipTest);\r",
+							"\r",
+							"(skipTest ? pm.test.skip : pm.test)(\"HTTP problem response meets standards for 404\", function () {\r",
+							"    var responseJSON = pm.response.json();\r",
+							"    pm.expect(responseJSON).to.be.an('object');\r",
+							"    pm.expect(responseJSON).to.have.property('type');\r",
+							"    pm.expect(responseJSON).to.have.property('correlationId');\r",
+							"});\r",
+							"\r",
+							"(skipTest ? pm.test.skip : pm.test)(\"HTTP problem response header\", function () {\r",
+							"    const header = pm.response.headers.get(\"Content-Type\");\r",
+							"    pm.expect(header).to.include(\"application/problem+json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						]
+					}
+				}
+			]
+		},
 		{
 			"name": "GET Tags",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "8ddfea9e-14d9-4d99-b848-7a23e8b767c9",
+						"id": "634527d4-02c1-4130-bad3-1f45fc4cbb7d",
 						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.expect(pm.response.to.have.status(200));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"let skipTest = !(pm.response.code === 404);\r",
+							"console.log(skipTest);\r",
+							"\r",
+							"(skipTest ? pm.test.skip : pm.test)(\"HTTP problem response meets standards for 404\", function () {\r",
+							"    var responseJSON = pm.response.json();\r",
+							"    pm.expect(responseJSON).to.be.an('object');\r",
+							"    pm.expect(responseJSON).to.have.property('type');\r",
+							"    pm.expect(responseJSON).to.have.property('correlationId');\r",
+							"});\r",
+							"\r",
+							"(skipTest ? pm.test.skip : pm.test)(\"HTTP problem response header\", function () {\r",
+							"    const header = pm.response.headers.get(\"Content-Type\");\r",
+							"    pm.expect(header).to.include(\"application/problem+json\");\r",
+							"});\r",
+							"\r",
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							"\r",
-							"pm.test(\"Content-Type is application/json\", function () {\r",
-							"    pm.expect(pm.response.headers.get('Content-Type'))\r",
-							"        .to.include('application/json');\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response body is a JSON object\", function () {\r",
-							"    pm.response.to.have.jsonBody();\r",
-							"    pm.expect(pm.response.json()).to.be.an('object');\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
 						"type": "text/javascript",
@@ -33,7 +166,7 @@
 					}
 				}
 			],
-			"id": "93b6d483-3255-4ef7-b56b-1eef10927f76",
+			"id": "6454b403-91cc-4606-88d2-b5a53f75743c",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -70,7 +203,7 @@
 		},
 		{
 			"name": "GET Articles",
-			"id": "df28826a-1f12-4814-aba0-a0955fc0995f",
+			"id": "f6513a6e-e8a9-4915-ba6f-99bf5d984bfb",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -105,7 +238,7 @@
 		},
 		{
 			"name": "Get Auth Token",
-			"id": "58dfbb9f-8094-4c00-9e3a-e57a151602b3",
+			"id": "b5b33a12-0508-478a-b632-03a770f81f4f",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -154,7 +287,7 @@
 					}
 				}
 			],
-			"id": "4ca82e0f-277e-4a46-b0e4-927854ebc7fe",
+			"id": "379b709b-de33-4643-81ff-003e6128110c",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -186,38 +319,6 @@
 				}
 			},
 			"response": []
-		}
-	],
-	"event": [
-		{
-			"listen": "prerequest",
-			"script": {
-				"id": "6b32674e-ca27-4e88-bdbb-3bbf4dcf8438",
-				"type": "text/javascript",
-				"packages": {},
-				"requests": {},
-				"exec": [
-					""
-				]
-			}
-		},
-		{
-			"listen": "test",
-			"script": {
-				"id": "796c6a58-5e47-4db4-a3a1-7a72f054a7d6",
-				"type": "text/javascript",
-				"packages": {},
-				"requests": {},
-				"exec": [
-					""
-				]
-			}
-		}
-	],
-	"variable": [
-		{
-			"value": "",
-			"type": "default"
 		}
 	]
 }
