@@ -1,13 +1,39 @@
 {
 	"info": {
-		"_postman_id": "626ef066-91fa-47ef-9e6c-8ad9b5193153",
+		"_postman_id": "6a92c95f-bea0-4d18-88dc-ba77604b9ef9",
 		"name": "Conduit",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "GET Tags",
-			"id": "cc4b0142-9f18-43ee-a248-ae0cf6ae85f5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8ddfea9e-14d9-4d99-b848-7a23e8b767c9",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get('Content-Type'))\r",
+							"        .to.include('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body is a JSON object\", function () {\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"    pm.expect(pm.response.json()).to.be.an('object');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"id": "93b6d483-3255-4ef7-b56b-1eef10927f76",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -30,14 +56,12 @@
 						{
 							"key": "Content-Type",
 							"value": "application/json",
-							"description": "Format of data",
-							"type": "text"
+							"description": "Format of data"
 						},
 						{
 							"key": "Accept",
 							"value": "application/json",
-							"description": "Expected response format",
-							"type": "text"
+							"description": "Expected response format"
 						}
 					]
 				}
@@ -46,7 +70,7 @@
 		},
 		{
 			"name": "GET Articles",
-			"id": "92eecfdc-78c7-416b-bb7e-539e0c2b0aae",
+			"id": "df28826a-1f12-4814-aba0-a0955fc0995f",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -81,7 +105,7 @@
 		},
 		{
 			"name": "Get Auth Token",
-			"id": "87a6b849-335f-4109-b07d-3f151c5bf87d",
+			"id": "58dfbb9f-8094-4c00-9e3a-e57a151602b3",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -130,7 +154,7 @@
 					}
 				}
 			],
-			"id": "d074a24e-9a52-48e5-b7d9-46e4605272bb",
+			"id": "4ca82e0f-277e-4a46-b0e4-927854ebc7fe",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -162,6 +186,38 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "6b32674e-ca27-4e88-bdbb-3bbf4dcf8438",
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "796c6a58-5e47-4db4-a3a1-7a72f054a7d6",
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"value": "",
+			"type": "default"
 		}
 	]
 }
