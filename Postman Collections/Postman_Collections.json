@@ -1,0 +1,167 @@
+{
+	"info": {
+		"_postman_id": "626ef066-91fa-47ef-9e6c-8ad9b5193153",
+		"name": "Conduit",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET Tags",
+			"id": "cc4b0142-9f18-43ee-a248-ae0cf6ae85f5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://conduit-api.bondaracademy.com/api/tags?Content-Type=application/json&Accept=application/json",
+					"protocol": "https",
+					"host": [
+						"conduit-api",
+						"bondaracademy",
+						"com"
+					],
+					"path": [
+						"api",
+						"tags"
+					],
+					"query": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "Format of data",
+							"type": "text"
+						},
+						{
+							"key": "Accept",
+							"value": "application/json",
+							"description": "Expected response format",
+							"type": "text"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Articles",
+			"id": "92eecfdc-78c7-416b-bb7e-539e0c2b0aae",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://conduit-api.bondaracademy.com/api/articles?limit=11&offset=0",
+					"protocol": "https",
+					"host": [
+						"conduit-api",
+						"bondaracademy",
+						"com"
+					],
+					"path": [
+						"api",
+						"articles"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "11"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Auth Token",
+			"id": "87a6b849-335f-4109-b07d-3f151c5bf87d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user\": {\n        \"email\": \"maryanna_cloud@softwaretesting.com\",\n        \"password\": \"Password123\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://conduit-api.bondaracademy.com/api/users/login"
+			},
+			"response": []
+		},
+		{
+			"name": "GET Non public articles",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Get token from environment",
+							"const authToken = pm.environment.get(\"authToken\");",
+							"",
+							"if (!authToken) {",
+							"    throw new Error(\"Auth token is missing. Make sure it was set in the login request.\");",
+							"}",
+							"",
+							"// Set Authorization header dynamically",
+							"pm.request.headers.upsert({",
+							"    key: \"Authorization\",",
+							"    value: authToken",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "68f4a0b6-4ca5-40e7-91fb-f0022ca6b4da"
+					}
+				}
+			],
+			"id": "d074a24e-9a52-48e5-b7d9-46e4605272bb",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://conduit-api.bondaracademy.com/api/articles?limit=10&offset=0",
+					"protocol": "https",
+					"host": [
+						"conduit-api",
+						"bondaracademy",
+						"com"
+					],
+					"path": [
+						"api",
+						"articles"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
